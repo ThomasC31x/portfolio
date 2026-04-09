@@ -510,6 +510,123 @@
       letter-spacing: -.5px;
     }
 
+    .projects-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 34px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .projects-tab-btn {
+      border: 1px solid var(--border-strong);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 9px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: .2px;
+      cursor: pointer;
+      transition: all .2s ease;
+    }
+
+    .projects-tab-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--glow);
+    }
+
+    .projects-tab-btn.active {
+      border-color: var(--accent);
+      color: #081017;
+      background: var(--accent);
+    }
+
+    .projects-tab-panel {
+      display: none;
+    }
+
+    .projects-tab-panel.active {
+      display: block;
+    }
+
+    .experience-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .experience-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.025), transparent 80%), var(--surface);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-soft);
+      transition: all .2s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .experience-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      line-height: 1.2;
+      padding-right: 108px;
+    }
+
+    .experience-project-chip {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 9px;
+      border-radius: 999px;
+      color: var(--accent);
+      border: 1px solid rgba(100, 255, 218, 0.35);
+      background: rgba(100, 255, 218, 0.08);
+      white-space: nowrap;
+    }
+
+    .experience-meta {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .experience-stack {
+      color: var(--accent3);
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 8px;
+      line-height: 1.45;
+    }
+
+    .experience-context {
+      color: var(--text);
+      font-size: 14px;
+      margin-top: 6px;
+      line-height: 1.5;
+      opacity: .9;
+    }
+
+    .experience-item:hover {
+      transform: translateY(-2px);
+      border-color: rgba(100, 255, 218, 0.35);
+      box-shadow: var(--shadow);
+    }
+
+    .experience-item:focus-visible {
+      outline: none;
+      box-shadow: var(--focus), var(--shadow);
+      border-color: rgba(100, 255, 218, 0.35);
+    }
+
     .divider {
       max-width: 1040px;
       margin: 0 auto;
@@ -1032,6 +1149,63 @@
       color: rgba(230, 237, 246, 0.9);
       line-height: 1.7;
       font-size: 14px;
+    }
+
+    /* ── EXPERIENCE MODAL ── */
+    .experience-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 85;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(5, 8, 12, 0.72);
+      backdrop-filter: blur(6px);
+    }
+
+    .experience-modal.open {
+      display: flex;
+    }
+
+    .experience-modal-dialog {
+      width: min(980px, 100%);
+      max-height: 88vh;
+      overflow: auto;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 55%), var(--surface2);
+      border: 1px solid var(--border-strong);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+    }
+
+    .experience-modal-summary {
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 18px;
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(230, 237, 246, 0.9);
+    }
+
+    .experience-modal-projects-title {
+      font-size: 12px;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .experience-modal-projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .experience-project-card {
+      cursor: pointer;
     }
 
     @media (max-width: 760px) {
@@ -2054,7 +2228,141 @@
 
   <!-- ═══════ PROJETS ═══════ -->
   <section class="section" id="projects">
-    <div class="timeline">
+    <div class="projects-tabs" role="tablist" aria-label="Projets et expériences">
+      <button class="projects-tab-btn active" id="tab-projets" type="button" role="tab" aria-selected="true"
+        aria-controls="panel-projets">Projets concrets</button>
+      <button class="projects-tab-btn" id="tab-experiences" type="button" role="tab" aria-selected="false"
+        aria-controls="panel-experiences">Expériences pro</button>
+    </div>
+
+    <div class="projects-tab-panel" id="panel-experiences" role="tabpanel" aria-labelledby="tab-experiences">
+      <div class="timeline">
+        <div class="year-group">
+          <div class="year-marker">
+            <div class="year-dot active"></div>
+            <div class="year-label current">2026 - en cours</div>
+          </div>
+          <div class="project-list">
+            <article class="experience-item">
+              <h3 class="experience-title">Développeur FullStack IA</h3>
+              <span class="experience-project-chip">1 projet</span>
+              <p class="experience-meta">Toulouse · 2026 - maintenant</p>
+              <p class="experience-stack">Angular 21+ · NestJS · Mastra · Docker · Centrifugo (WebSocket) · Turborepo
+                (monorepo)</p>
+              <p class="experience-context">Conception d'une plateforme d'automatisation IA agentique qui orchestre des
+                workflows complexes avec des agents autonomes (projet IA en cours sur le site).</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="year-group">
+          <div class="year-marker">
+            <div class="year-dot"></div>
+            <div class="year-label">2025</div>
+          </div>
+          <div class="project-list">
+            <article class="experience-item">
+              <h3 class="experience-title">Développeur Angular Senior — Airbus Helicopter (Freelance)</h3>
+              <span class="experience-project-chip">1 projet</span>
+              <p class="experience-meta">Marignane · 2025 - maintenant (1+ an)</p>
+              <p class="experience-stack">Angular (Signals, Standalone) · PrimeNG · Playwright · Node (Express) ·
+                OpenShift</p>
+              <p class="experience-context">Refonte d'une plateforme documentaire hélicoptère avec focus performance,
+                qualité logicielle et industrialisation des livraisons en environnement SAFe.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="year-group">
+          <div class="year-marker">
+            <div class="year-dot"></div>
+            <div class="year-label">2024</div>
+          </div>
+          <div class="project-list">
+            <article class="experience-item">
+              <h3 class="experience-title">Développeur FullStack Freelance (depuis 2024)</h3>
+              <span class="experience-project-chip">3 projets</span>
+              <p class="experience-meta">Toulouse · depuis 2024</p>
+              <p class="experience-stack">Angular · Ionic · Node.js · MongoDB · PostgreSQL · Stripe</p>
+              <p class="experience-context">Accompagnement de produits web/mobile en mode freelance, de la conception à
+                la mise en production, avec itérations rapides orientées valeur métier.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="year-group">
+          <div class="year-marker">
+            <div class="year-dot"></div>
+            <div class="year-label">2022</div>
+          </div>
+          <div class="project-list">
+            <article class="experience-item">
+              <h3 class="experience-title">Développeur FullStack — SmartWave</h3>
+              <span class="experience-project-chip">2 projets</span>
+              <p class="experience-meta">Canton de Genève · 2022 - 2023 (1 an)</p>
+              <p class="experience-stack">Angular · Node.js · Camunda · Mendix · Spring Boot · AWS EC2</p>
+              <p class="experience-context">Développement d'applications métier orientées workflows et dématérialisation,
+                avec déploiement cloud et maintenance de solutions en production.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="year-group">
+          <div class="year-marker">
+            <div class="year-dot"></div>
+            <div class="year-label">2019</div>
+          </div>
+          <div class="project-list">
+            <article class="experience-item">
+              <h3 class="experience-title">Développeur Web &amp; Big Data — Airbus</h3>
+              <span class="experience-project-chip">1 projet</span>
+              <p class="experience-meta">Toulouse · 2019 - 2021 (2 ans)</p>
+              <p class="experience-stack">React.js · Java Spring Boot · Splunk · Palantir Foundry/Slate · Python</p>
+              <p class="experience-context">Conception d'outils data pour Skywise, création de dashboards d'analyse et
+                contributions innovation autour du machine learning appliqué.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="year-group">
+          <div class="year-marker">
+            <div class="year-dot"></div>
+            <div class="year-label">2018</div>
+          </div>
+          <div class="project-list">
+            <article class="experience-item">
+              <h3 class="experience-title">Développeur Web — Inovans</h3>
+              <span class="experience-project-chip">1 projet</span>
+              <p class="experience-meta">Toulouse · 2018 - 2019 (1 an)</p>
+              <p class="experience-stack">Angular · Java · Spring Boot · Microservices · Kubernetes</p>
+              <p class="experience-context">Développement d'une application RH avec migration Angular et modernisation du
+                backend vers une architecture microservices orchestrée.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="year-group">
+          <div class="year-marker">
+            <div class="year-dot"></div>
+            <div class="year-label">2016</div>
+          </div>
+          <div class="project-list">
+            <article class="experience-item">
+              <h3 class="experience-title">Développeur Logiciel &amp; Web — ACTI'CONSEILS</h3>
+              <span class="experience-project-chip">2 projets</span>
+              <p class="experience-meta">Toulouse · 2016 - 2018 (2 ans)</p>
+              <p class="experience-stack">Python · PHP · VB.NET · VBA · CakePHP</p>
+              <p class="experience-context">Mise en place d'un hébergeur web et FTP pour gérer un SMQ.<br>Maintenance
+                d'un intranet sous CakePHP.<br>Service Desk, gestion de sauvegarde en RAID 1 avec NAS
+                Synology.<br>Développement de scripts Python, PHP et VB.net et macro VBA.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="projects-tab-panel active" id="panel-projets" role="tabpanel" aria-labelledby="tab-projets">
+      <div class="timeline">
 
       <!-- EN COURS -->
       <div class="year-group">
@@ -3025,6 +3333,7 @@
         </div>
       </div>
 
+      </div>
     </div>
   </section>
 
@@ -3106,6 +3415,21 @@
         <h4>Contexte technique</h4>
         <p id="project-modal-context"></p>
       </section>
+    </div>
+  </div>
+
+  <div class="experience-modal" id="experience-modal" aria-hidden="true">
+    <div class="experience-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="experience-modal-title">
+      <div class="project-modal-header">
+        <div>
+          <h3 class="project-modal-title" id="experience-modal-title">Détail de l'expérience</h3>
+          <p class="project-modal-meta" id="experience-modal-meta"></p>
+        </div>
+        <button class="project-modal-close" type="button" id="experience-modal-close" aria-label="Fermer">×</button>
+      </div>
+      <section class="experience-modal-summary" id="experience-modal-summary"></section>
+      <h4 class="experience-modal-projects-title">Projets associés</h4>
+      <div class="experience-modal-projects" id="experience-modal-projects"></div>
     </div>
   </div>
 
@@ -3241,6 +3565,35 @@
     const projectModalContext = document.getElementById('project-modal-context');
     const projectModalClose = document.getElementById('project-modal-close');
     let projectModalLastFocus = null;
+    const experienceModal = document.getElementById('experience-modal');
+    const experienceModalTitle = document.getElementById('experience-modal-title');
+    const experienceModalMeta = document.getElementById('experience-modal-meta');
+    const experienceModalSummary = document.getElementById('experience-modal-summary');
+    const experienceModalProjects = document.getElementById('experience-modal-projects');
+    const experienceModalClose = document.getElementById('experience-modal-close');
+    let experienceModalLastFocus = null;
+
+    const projectTabButtons = document.querySelectorAll('.projects-tab-btn');
+    const projectTabPanels = document.querySelectorAll('.projects-tab-panel');
+
+    function setProjectsTab(targetPanelId) {
+      projectTabButtons.forEach(button => {
+        const isActive = button.getAttribute('aria-controls') === targetPanelId;
+        button.classList.toggle('active', isActive);
+        button.setAttribute('aria-selected', String(isActive));
+      });
+
+      projectTabPanels.forEach(panel => {
+        const isActive = panel.id === targetPanelId;
+        panel.classList.toggle('active', isActive);
+      });
+    }
+
+    projectTabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        setProjectsTab(button.getAttribute('aria-controls'));
+      });
+    });
 
     function renderList(target, items) {
       target.innerHTML = '';
@@ -3276,35 +3629,159 @@
       }
     }
 
-    document.querySelectorAll('.project-card').forEach(card => {
-      const titleEl = card.querySelector('.card-title');
+    const experienceDetails = {
+      "Développeur FullStack IA": {
+        meta: "Toulouse · 2026 - maintenant",
+        summary: "Développement d'une plateforme IA agentique pour automatiser des processus multi-étapes, avec orchestration temps réel et architecture monorepo full-stack.",
+        projects: ["Plateforme IA d'Automatisation"]
+      },
+      "Développeur Angular Senior — Airbus Helicopter (Freelance)": {
+        meta: "Marignane · 2025 - maintenant",
+        summary: "Refonte front d'une plateforme documentaire critique, optimisation de performance et pilotage technique Angular dans un contexte industriel exigeant.",
+        projects: ["OneUI — Gestion Documentation Hélicoptère"]
+      },
+      "Développeur FullStack Freelance (depuis 2024)": {
+        meta: "Toulouse · depuis 2024",
+        summary: "Conception et livraison de produits web/mobile en autonomie, de l'architecture à la mise en production et à l'itération continue.",
+        projects: ["DJ4Me", "Forgeron3 (Marcus AI)", "La Guinguette Chantante"]
+      },
+      "Développeur FullStack — SmartWave": {
+        meta: "Canton de Genève · 2022 - 2023",
+        summary: "Développement et maintenance d'applications métier orientées workflow, avec déploiement cloud et intégration de processus métiers.",
+        projects: ["Application Workflow UNIL", "Dématérialisation de Factures"]
+      },
+      "Développeur Web & Big Data — Airbus": {
+        meta: "Toulouse · 2019 - 2021",
+        summary: "Contribution au programme Skywise pour construire des outils data (front, API, dashboards) et des initiatives d'innovation en Python/ML.",
+        projects: ["Data Product Manager — Airbus Skywise"]
+      },
+      "Développeur Web — Inovans": {
+        meta: "Toulouse · 2018 - 2019",
+        summary: "Développement full-stack d'une application RH avec migration Angular et transformation back-end vers une architecture microservices.",
+        projects: ["Application RH — Gestion des Ressources Humaines"]
+      },
+      "Développeur Logiciel & Web — ACTI'CONSEILS": {
+        meta: "Toulouse · 2016 - 2018",
+        summary: "Mise en place d'un hébergeur web et FTP pour gérer un SMQ. Maintenance d'un intranet sous CakePHP. Service Desk et gestion de sauvegarde en RAID 1 avec NAS Synology. Développement de scripts Python, PHP et VB.net et macro VBA.",
+        projects: ["Interface de Pilotage de Données", "Gestionnaire d'Archivage Automatique"]
+      }
+    };
+
+    function buildExperienceProjectCard(title) {
+      const detail = projectDetails[title];
+      if (!detail) return '';
+      const tech = (detail.technologies || []).slice(0, 6).join(' · ');
+      const desc = detail.mission || detail.context || '';
+      return `
+        <article class="project-card experience-project-card">
+          <div class="card-body" style="padding-top:22px;">
+            <div class="card-top">
+              <div class="card-title">${title}</div>
+              <div class="badges"><span class="badge pro">Projet</span></div>
+            </div>
+            <div class="card-tech">${tech}</div>
+            <div class="card-desc">${desc}</div>
+          </div>
+        </article>
+      `;
+    }
+
+    function openExperienceModal(title, triggerEl) {
+      const detail = experienceDetails[title];
+      if (!detail) return;
+      experienceModalLastFocus = triggerEl || document.activeElement;
+      experienceModalTitle.textContent = title;
+      experienceModalMeta.textContent = detail.meta || '';
+      experienceModalSummary.textContent = detail.summary || '';
+      const cards = (detail.projects || []).map(projectTitle => buildExperienceProjectCard(projectTitle)).join('');
+      experienceModalProjects.innerHTML = cards || '<p class="experience-context">Aucun projet associé.</p>';
+      attachProjectCardInteractions(
+        experienceModalProjects.querySelectorAll('.experience-project-card'),
+        { closeExperienceFirst: true }
+      );
+      experienceModal.classList.add('open');
+      experienceModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      experienceModalClose.focus();
+    }
+
+    function closeExperienceModal() {
+      experienceModal.classList.remove('open');
+      experienceModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (experienceModalLastFocus && typeof experienceModalLastFocus.focus === 'function') {
+        experienceModalLastFocus.focus();
+      }
+    }
+
+    function attachProjectCardInteractions(cards, { closeExperienceFirst = false } = {}) {
+      cards.forEach(card => {
+        const titleEl = card.querySelector('.card-title');
+        if (!titleEl) return;
+        const title = titleEl.textContent.trim();
+        if (!projectDetails[title]) return;
+
+        card.setAttribute('tabindex', '0');
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', `Voir le détail du projet : ${title}`);
+
+        card.addEventListener('click', (event) => {
+          if (event.target.closest('.card-link')) return;
+          if (closeExperienceFirst && experienceModal.classList.contains('open')) {
+            closeExperienceModal();
+          }
+          openProjectModal(title, card);
+        });
+
+        card.addEventListener('keydown', (event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            if (closeExperienceFirst && experienceModal.classList.contains('open')) {
+              closeExperienceModal();
+            }
+            openProjectModal(title, card);
+          }
+        });
+      });
+    }
+
+    document.querySelectorAll('.experience-item').forEach(item => {
+      const titleEl = item.querySelector('.experience-title');
       if (!titleEl) return;
       const title = titleEl.textContent.trim();
-      if (!projectDetails[title]) return;
+      if (!experienceDetails[title]) return;
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'button');
+      item.setAttribute('aria-label', `Voir le détail de l'expérience : ${title}`);
 
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', `Voir le détail du projet : ${title}`);
-
-      card.addEventListener('click', (event) => {
-        if (event.target.closest('.card-link')) return;
-        openProjectModal(title, card);
+      item.addEventListener('click', () => {
+        openExperienceModal(title, item);
       });
 
-      card.addEventListener('keydown', (event) => {
+      item.addEventListener('keydown', (event) => {
         if (event.key === 'Enter' || event.key === ' ') {
           event.preventDefault();
-          openProjectModal(title, card);
+          openExperienceModal(title, item);
         }
       });
     });
+    attachProjectCardInteractions(document.querySelectorAll('.project-card'));
 
     projectModalClose.addEventListener('click', closeProjectModal);
     projectModal.addEventListener('click', (event) => {
       if (event.target === projectModal) closeProjectModal();
     });
+    experienceModalClose.addEventListener('click', closeExperienceModal);
+    experienceModal.addEventListener('click', (event) => {
+      if (event.target === experienceModal) closeExperienceModal();
+    });
     document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape' && projectModal.classList.contains('open')) {
+      if (event.key !== 'Escape') return;
+      if (experienceModal.classList.contains('open')) {
+        closeExperienceModal();
+        return;
+      }
+      if (projectModal.classList.contains('open')) {
         closeProjectModal();
       }
     });
