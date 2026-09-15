@@ -1190,6 +1190,14 @@
       color: rgba(230, 237, 246, 0.9);
     }
 
+    .experience-modal-block {
+      margin-bottom: 12px;
+    }
+
+    .experience-modal-block[hidden] {
+      display: none;
+    }
+
     .experience-modal-projects-title {
       font-size: 12px;
       letter-spacing: 1.2px;
@@ -2173,15 +2181,15 @@
         <div class="hero-tags">
           <div class="hero-tags-row">
             <span class="hero-tag ft">Angular</span>
-            <span class="hero-tag ft">Node.js</span>
-            <span class="hero-tag ft">Ionic</span>
             <span class="hero-tag ft">NestJS</span>
+            <span class="hero-tag ft">IA / RAG</span>
+            <span class="hero-tag ft">Mastra</span>
           </div>
           <div class="hero-tags-row">
-            <span class="hero-tag">Python</span>
-            <span class="hero-tag">Java</span>
+            <span class="hero-tag">Ionic</span>
+            <span class="hero-tag">Node.js</span>
+            <span class="hero-tag">Qdrant</span>
             <span class="hero-tag">PostgreSQL</span>
-            <span class="hero-tag">MongoDB</span>
           </div>
         </div>
         <div class="hero-links">
@@ -2244,13 +2252,15 @@
           </div>
           <div class="project-list">
             <article class="experience-item">
-              <h3 class="experience-title">Développeur FullStack IA</h3>
+              <h3 class="experience-title">Développeur FullStack IA — Forgeron3</h3>
               <span class="experience-project-chip">1 projet</span>
               <p class="experience-meta">Toulouse · 2026 - maintenant</p>
-              <p class="experience-stack">Angular 21+ · NestJS · Mastra · Docker · Centrifugo (WebSocket) · Turborepo
-                (monorepo)</p>
-              <p class="experience-context">Conception d'une plateforme d'automatisation IA agentique qui orchestre des
-                workflows complexes avec des agents autonomes (projet IA en cours sur le site).</p>
+              <p class="experience-stack">Angular 21 (Signals) · NestJS · Mastra · RAG hybride · Qdrant · Knowledge
+                Graph · MCP · Centrifugo · SIP/VoIP · STT/TTS</p>
+              <p class="experience-context">Création de zéro d'une plateforme de workflow IA au sein d'une équipe de 4,
+                en architecture monorepo : moteur RAG avancé (ingestion multi-format, recherche hybride
+                vectoriel/BM25/Knowledge Graph), agents et workflows orchestrés, et une brique de téléphonie IA
+                (SIP, STT/TTS) sur une infrastructure souveraine FR/EU.</p>
             </article>
           </div>
         </div>
@@ -2264,7 +2274,7 @@
             <article class="experience-item">
               <h3 class="experience-title">Développeur Angular Senior — Airbus Helicopter (Freelance)</h3>
               <span class="experience-project-chip">1 projet</span>
-              <p class="experience-meta">Marignane · 2025 - maintenant (1+ an)</p>
+              <p class="experience-meta">Marignane · 2025 - 2026 (11 mois)</p>
               <p class="experience-stack">Angular (Signals, Standalone) · PrimeNG · Playwright · Node (Express) ·
                 OpenShift</p>
               <p class="experience-context">Refonte d'une plateforme documentaire hélicoptère avec focus performance,
@@ -2460,10 +2470,11 @@
                 </div>
                 <div class="badges"><span class="badge inp">En cours</span><span class="badge pro">Pro</span></div>
               </div>
-              <div class="card-tech">Angular · NestJS · Mastra</div>
-              <div class="card-desc">Plateforme d'automatisation basée sur l'intelligence artificielle agentique,
-                orchestrant des workflows complexes grâce à des agents autonomes. Architecture full-stack moderne avec
-                un frontend Angular et une API NestJS.</div>
+              <div class="card-tech">Angular 21 · NestJS · Mastra · Qdrant · RAG hybride · VoIP</div>
+              <div class="card-desc">Plateforme de workflow IA bâtie autour d'un moteur RAG avancé : ingestion
+                multi-format, recherche hybride (vectoriel, BM25, Knowledge Graph) et agents autonomes connectés via
+                MCP. Inclut une brique de téléphonie IA (SIP, STT/TTS) et un répondeur téléphonique intelligent, sur
+                infrastructure souveraine FR/EU.</div>
             </div>
           </div>
 
@@ -3464,6 +3475,14 @@
         <button class="project-modal-close" type="button" id="experience-modal-close" aria-label="Fermer">×</button>
       </div>
       <section class="experience-modal-summary" id="experience-modal-summary"></section>
+      <section class="project-modal-block experience-modal-block" id="experience-modal-highlights-block" hidden>
+        <h4>Ce que j'ai construit</h4>
+        <ul class="project-modal-list" id="experience-modal-highlights"></ul>
+      </section>
+      <section class="project-modal-block experience-modal-block" id="experience-modal-tech-block" hidden>
+        <h4>Environnement technique</h4>
+        <ul class="project-modal-list" id="experience-modal-tech"></ul>
+      </section>
       <h4 class="experience-modal-projects-title">Projets associés</h4>
       <div class="experience-modal-projects" id="experience-modal-projects"></div>
     </div>
@@ -3472,11 +3491,11 @@
   <script>
     const projectDetails = {
       "Plateforme IA d'Automatisation": {
-        meta: "2026 · Produit en cours",
-        technologies: ["Angular", "NestJS", "Mastra (agentic AI)", "API REST", "Architecture full-stack"],
-        roles: ["Développeur FullStack", "Concepteur d'architecture logicielle"],
-        mission: "Concevoir une plateforme d'automatisation orientée IA agentique pour exécuter des workflows complexes en réduisant les tâches manuelles et en fiabilisant l'orchestration.",
-        context: "Le choix Angular + NestJS permet une base TypeScript homogène, plus simple à maintenir sur la durée. L'approche agentique (Mastra) sert à structurer les actions en étapes autonomes et observables, afin d'accélérer la production tout en gardant la traçabilité des décisions techniques."
+        meta: "Forgeron3 · 2026 · Produit en cours · Toulouse",
+        technologies: ["Monorepo", "Angular 21 (Signals, Standalone)", "PrimeNG", "NestJS", "Centrifugo (WebSocket, JWT)", "Mastra (orchestration agentique)", "RAG hybride : vectoriel + BM25 + Knowledge Graph", "Qdrant, embeddings, reranking", "Connecteurs MCP", "SIP / trunk VoIP, media fork RTP", "STT / TTS (streaming & batch)", "API REST", "Infrastructure souveraine FR/EU"],
+        roles: ["Développeur FullStack IA", "Concepteur de l'architecture RAG", "Intégrateur téléphonie IA (VoIP / STT / TTS)"],
+        mission: "Construire de zéro, en équipe de 4 (UI designer, chef produit, 2 développeurs), une plateforme de workflow IA capable d'ingérer les documents d'une organisation, d'y répondre avec fiabilité et d'exécuter des actions via des agents — jusqu'à répondre au téléphone à la place de l'utilisateur.",
+        context: "Le monorepo Angular 21 + NestJS garde une base TypeScript homogène du front à la gateway temps réel. Centrifugo a été retenu pour diffuser l'avancement des workflows sans coupler le back au transport WebSocket. Côté IA, la recherche purement vectorielle échouait sur les requêtes à termes exacts (références, codes produit) : la combinaison vectoriel + BM25 + Knowledge Graph, suivie d'un reranking, corrige ce point, tandis que l'isolation par workspace garantit qu'aucun document ne fuite entre clients. Mastra structure les agents en étapes observables et les connecteurs MCP évitent de réécrire une intégration par outil tiers. La brique téléphonie repose sur un media fork du flux RTP vers une gateway NestJS, ce qui permet de transcrire en streaming sans perturber l'appel ; la séparation des locuteurs se fait par canal plutôt que par diarisation, plus fiable et moins coûteuse. L'ensemble est hébergé en FR/EU pour répondre au RGPD et aux contraintes de conformité sur l'enregistrement des appels."
       },
       "PicRoulette": {
         meta: "Projet perso · 2026 · En cours · iOS & Android",
@@ -3612,6 +3631,10 @@
     const experienceModalTitle = document.getElementById('experience-modal-title');
     const experienceModalMeta = document.getElementById('experience-modal-meta');
     const experienceModalSummary = document.getElementById('experience-modal-summary');
+    const experienceModalHighlights = document.getElementById('experience-modal-highlights');
+    const experienceModalHighlightsBlock = document.getElementById('experience-modal-highlights-block');
+    const experienceModalTech = document.getElementById('experience-modal-tech');
+    const experienceModalTechBlock = document.getElementById('experience-modal-tech-block');
     const experienceModalProjects = document.getElementById('experience-modal-projects');
     const experienceModalClose = document.getElementById('experience-modal-close');
     let experienceModalLastFocus = null;
@@ -3647,6 +3670,12 @@
       });
     }
 
+    function renderOptionalList(listEl, blockEl, items) {
+      const hasItems = Array.isArray(items) && items.length > 0;
+      blockEl.hidden = !hasItems;
+      renderList(listEl, hasItems ? items : []);
+    }
+
     function openProjectModal(title, triggerEl) {
       const detail = projectDetails[title];
       if (!detail) return;
@@ -3673,13 +3702,35 @@
     }
 
     const experienceDetails = {
-      "Développeur FullStack IA": {
+      "Développeur FullStack IA — Forgeron3": {
         meta: "Toulouse · 2026 - maintenant",
-        summary: "Développement d'une plateforme IA agentique pour automatiser des processus multi-étapes, avec orchestration temps réel et architecture monorepo full-stack.",
+        summary: "Création de zéro d'une plateforme de workflow IA au sein d'une équipe de 4 (UI designer, chef produit, 2 développeurs), en architecture monorepo. Le produit couvre toute la chaîne : ingestion documentaire, moteur RAG avancé, agents et workflows orchestrés, jusqu'à une brique de téléphonie IA — le tout hébergé sur une infrastructure souveraine FR/EU (RGPD).",
+        highlights: [
+          "Plateforme de workflow IA construite de zéro : front Angular 21+ (Signals, Standalone, PrimeNG) et back NestJS couplé à Centrifugo pour le temps réel (WebSocket, JWT), dans un monorepo.",
+          "Moteur RAG avancé orchestré avec Mastra : ingestion multi-format (PDF, DOCX, images, e-mails, réunions), chunking, vectorisation (embeddings) et indexation en base vectorielle Qdrant.",
+          "Recherche hybride combinant vectoriel, BM25 et Knowledge Graph, avec reranking des résultats, mémoire conversationnelle et isolation stricte par workspace.",
+          "Agents & workflows IA : développement de tools custom, intégration de connecteurs MCP, orchestration et exécution planifiée des workflows.",
+          "Brique VoIP : trunk SIP et media fork du flux RTP vers une gateway WebSocket NestJS, avec transcription STT (streaming et batch) et séparation des locuteurs par canal.",
+          "Répondeur téléphonique IA : boucle STT → agent RAG → TTS réinjecté dans l'appel, sur infrastructure souveraine FR/EU (RGPD, conformité de l'enregistrement)."
+        ],
+        technologies: [
+          "Angular 21 (Signals, Standalone)",
+          "NestJS",
+          "PrimeNG",
+          "Centrifugo (WebSocket temps réel, JWT)",
+          "Mastra",
+          "RAG hybride (vectoriel / BM25 / Knowledge Graph)",
+          "Qdrant, embeddings",
+          "MCP (connecteurs)",
+          "SIP / VoIP, RTP",
+          "STT / TTS",
+          "API REST",
+          "Architecture monorepo"
+        ],
         projects: ["Plateforme IA d'Automatisation"]
       },
       "Développeur Angular Senior — Airbus Helicopter (Freelance)": {
-        meta: "Marignane · 2025 - maintenant",
+        meta: "Marignane · 2025 - 2026",
         summary: "Refonte front d'une plateforme documentaire critique, optimisation de performance et pilotage technique Angular dans un contexte industriel exigeant.",
         projects: ["OneUI — Gestion Documentation Hélicoptère"]
       },
@@ -3736,6 +3787,8 @@
       experienceModalTitle.textContent = title;
       experienceModalMeta.textContent = detail.meta || '';
       experienceModalSummary.textContent = detail.summary || '';
+      renderOptionalList(experienceModalHighlights, experienceModalHighlightsBlock, detail.highlights);
+      renderOptionalList(experienceModalTech, experienceModalTechBlock, detail.technologies);
       const cards = (detail.projects || []).map(projectTitle => buildExperienceProjectCard(projectTitle)).join('');
       experienceModalProjects.innerHTML = cards || '<p class="experience-context">Aucun projet associé.</p>';
       attachProjectCardInteractions(
